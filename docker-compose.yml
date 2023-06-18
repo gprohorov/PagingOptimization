@@ -1,0 +1,16 @@
+# cat docker-compose.yml
+version: '3.3'
+services:
+  ### MySQL Container
+  mysql:
+    build:
+      context: /home/IdeaProjects/PagingOptimization
+      args:
+        - MYSQL_DATABASE=db_news
+        - MYSQL_USER=user
+        - MYSQL_PASSWORD=user
+        - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./data/mysql:/data
