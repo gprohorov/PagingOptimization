@@ -1,8 +1,8 @@
 package edu.chnu.pagingoptimization.controller;
 
-import edu.chnu.pagingoptimization.service.ItemServiceImpl;
+import edu.chnu.pagingoptimization.service.ItemJdbcServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
+
 import org.springframework.web.bind.annotation.*;
 import edu.chnu.pagingoptimization.model.Item;
 
@@ -20,15 +20,15 @@ import java.util.List;
 public class NewsController {
 
     @Autowired
-    ItemServiceImpl service;
+    ItemJdbcServiceImpl service;
 
     @RequestMapping
-    public Page<Item> getTop10News(){
+    public List<Item> getTop10News(){
         return service.get10LastNews();
     }
 
     @RequestMapping("/page/{number}")
-    public Page<Item> getPageof10News(@PathVariable int number){
+    public List<Item> getPageof10News(@PathVariable int number){
         return service.getPage(number);
     }
 
